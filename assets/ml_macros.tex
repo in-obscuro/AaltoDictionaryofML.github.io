@@ -1,7 +1,6 @@
  \usepackage{mleftright}
  
 % Generic syms
-
 \newcommand{\strongconvparam}[1]{\alpha^{(#1)}}
 \newcommand{\lipschitzparam}[1]{\beta^{(#1)}}
 \newcommand{\clusteropterr}[1]{\varepsilon^{(#1)}}
@@ -11,13 +10,14 @@
 \newcommand{\hypothesis}{h} 
 \newcommand{\algomap}{\mathcal{A}}
 \newcommand{\hypothesisparam}[1]{h^{(#1)}} 
-\newcommand{\estlocalparamsiter}[2]{\widehat{\weights}^{(#1)}_{#2}}
+\newcommand{\estlocalparamsiter}[2]{\widehat{\weights}^{(#1,#2)}}
 \newcommand{\perturbedlocalparamsiter}[2]{\widetilde{\weights}^{(#1)}_{#2}}
 \newcommand{\estlocalhypositer}[2]{\widehat{\hypothesis}^{(#1)}_{#2}}
 \newcommand{\estparams}[1]{\widehat{\weights}_{#1}}
 \newcommand{\localmodel}[1]{\hypospace^{(#1)}} 
 \newcommand{\localhypothesis}[1]{\hypothesis^{(#1)}} 
 \newcommand{\learntlocalhypothesis}[1]{\widehat{\hypothesis}^{(#1)}} 
+\newcommand{\learntlocalhypothesisiter}[2]{\widehat{\hypothesis}^{(#1,#2)}}
 \newcommand{\discrepancy}[2]{d^{(#1,#2)}}  % discrepancy between local models of nodes #1 and #2
 \newcommand{\sphere}[1]{\mathbb{S}^{(#1)}}  % the unit sphere in #1 dimensions
 \newcommand{\firstnatural}[1]{[#1]}    % the set of first #1 natural numbers {1,2,..., #1} 
@@ -37,6 +37,7 @@
 \newcommand{\vu}[0]{{\bf u}}
 \newcommand{\vs}[0]{{\bf s}}
 \newcommand{\vm}[0]{{\bf m}}
+\newcommand{\vp}[0]{{\bf p}}
 \newcommand{\vq}[0]{{\bf q}}
 \newcommand{\mX}[0]{{\bf X}}
 \newcommand{\mC}[0]{{\bf C}}
@@ -66,6 +67,7 @@
 \newcommand{\vy}[0]{{\bf y}}
 \newcommand{\va}[0]{{\bf a}}
 \newcommand{\ve}[0]{{\bf e}}
+\newcommand{\vf}[0]{{\bf f}}
 \newcommand{\vn}[0]{{\bf n}}
 \newcommand{\vb}[0]{{\bf b}}
 \newcommand{\vr}[0]{{\bf r}}
@@ -79,23 +81,33 @@
 \newcommand{\linspan}[1]{{\rm span}\left(#1 \right)}  % the span of the columns of matrix
 \newcommand{\nullspace}[1]{{\rm null}\left(#1 \right)}  % the nullspace of matrix
 \def \vepsilon{{\bm{\epsilon}}}
+\newcommand{\indicatorfunc}[1]{\mathbb{I}_{#1}}
 
 % Statistics and Probability Theory 
-
+\newcommand{\simplex}[1]{\Delta^{#1}}
 \newcommand{\meanvecgeneric}{{\bm \mu}} 
+\newcommand{\samplemeanvecgeneric}{\widehat{\bm \mu}} 
 \newcommand{\covmtxgeneric}{\mC} 
+\newcommand{\indexset}{\mathcal{I}}
+\newcommand{\samplecovmtxgeneric}{\widehat{\mC}} 
 \newcommand{\errprob}{p_{\rm err}} 
-\newcommand{\prob}[1]{P\left(#1\right)} 
+\newcommand{\probmeasure}{\mathbb{P}} 
+\newcommand{\prob}[1]{\mathbb{P}\left(#1\right)} 
 \newcommand{\cdf}[2]{F^{(#1)}\left(#2\right)} 
-\newcommand{\probdist}{P}
+\newcommand{\probdist}{\mathbb{P}}
+\newcommand{\entropy}[1]{H\left(#1\right)}   % entropy of random variable #1
 \newcommand{\pdf}[2]{p^{(#1)}\left(#2\right)}   % probability density function
 \newcommand{\pmf}[2]{p^{(#1)}\left(#2\right)}   % probability mass function
+\newcommand{\mgf}[2]{M_{#1}\left(#2\right)}   % moment generating function
+\newcommand{\mgfder}[3]{M_{#1}^{(#2)}\left(#3\right)}   % moment generating function derivative
 \newcommand{\meanvec}[1]{{\bm \mu}^{(#1)}}  % mean vector of group #1
+%\newcommand{\covmtx}[1]{\mathbf{C}^{(#1)}}  % covariance matrix of group #1
 \newcommand{\covmtx}[1]{\mathbf{C}^{(#1)}}  % covariance matrix of group #1
 \newcommand{\samplemeanvec}[1]{\widehat{{\bm \mu}}^{(#1)}}  % sample mean vector of group #1
 \newcommand{\samplecovmtx}[1]{\widehat{\mathbf{C}}^{(#1)}}  % sample covariance matrix of group #1
 \newcommand{\expect}{\mathbb{E} }    % expectation operator
 \newcommand{\cov}[2]{{\rm cov}\left(#1,#2\right)}    % covariance of random variables #1 and #2
+\newcommand{\covfunc}[3]{{\rm cov}^{(#1)}\left(#2,#3\right)}  % covariance function of random process #1 evaluated at #2 and #3
 \newcommand{\sigmaalgebra}{\Sigma}    % sigma algebra
 \newcommand{\samplespace}{\Omega}
 \newcommand{\eventspace}{\mathcal{F}}
@@ -122,8 +134,8 @@
 \newcommand{\maxnredges}{E_{\rm max}} 
 \newcommand{\privattr}{s}
 \newcommand{\sensattr}{s} 
-\newcommand{\kernel}{K} 
-\newcommand{\kernelmap}[2]{K\big(#1,#2\big)} 
+\newcommand{\kernel}{k} 
+\newcommand{\kernelmap}[2]{k\big(#1,#2\big)} 
 
 \newcommand{\norm}[1]{\Vert  {#1} \Vert}
 %\newcommand{\normgeneric}[2]{\left\Vert  {#1} \right\Vert_{#2}}
@@ -138,9 +150,9 @@
 \newcommand{\eigvecCov}{\mathbf{u}} 
 \newcommand{\eigvecCoventry}{u}
 \newcommand{\featuredim}{d}
-\newcommand{\nrfeatures}{\featuredim}
+\newcommand{\nrfeatures}{\featuredim}   %  number of features used to characterize a data point 
 \newcommand{\featurelenraw}{\featuredim'}
-\newcommand{\featurelen}{\featuredim}
+\newcommand{\featurelen}{\featuredim}     % length of a feature vector
 \newcommand{\samplingset}{\mathcal{M}}
 \newcommand{\trainingset}{\samplingset}
 \newcommand{\samplesize}{m}
@@ -149,16 +161,18 @@
 \newcommand{\datapoint}{\vz} 
 \newcommand{\actionidx}{a} 
 \newcommand{\clusteridx}{c} 
-\newcommand{\sizehypospace}{D}
-\newcommand{\nrcluster}{k} 
-\newcommand{\nrseeds}{s} 
-\newcommand{\featureidx}{j} 
+\newcommand{\sizehypospace}{D} % ????
+\newcommand{\nrcluster}{k}   % number of clusters
+\newcommand{\nrseeds}{s}  
+\newcommand{\featureidx}{j}  % feature index 
 \newcommand{\clustermean}[1]{{\bm \mu}^{(#1)}} 
+\newcommand{\localclustercentroiditer}[3]{{\vw}^{(#1,#2,#3)}}   % #1 = node index (e.g., "i"), #2= cluster index (e.g., "c") , #3 = iteration index
 \newcommand{\localclustercentroid}[2]{{\vw}^{(#1,#2)}}   % #1 = node index (e.g., "i"), #2= cluster index (e.g., "c") 
-\newcommand{\clustercentroid}[1]{{\vw}^{(#1)}} 
-\newcommand{\clustercov}{{\bm \Sigma}} 
-\newcommand{\target}{y}
-\newcommand{\error}{E}
+\newcommand{\clustercentroid}[1]{{\vw}^{(#1)}} % #1 = cluster index (e.g., "c")
+\newcommand{\clustercentroiditer}[2]{{\vw}^{(#1,#2)}} % #1 = cluster index (e.g., "c"), #2 = iteration index
+\newcommand{\clustercov}{{\bm \Sigma}}  % ????
+\newcommand{\target}{y}             % target variable
+\newcommand{\error}{E} 
 \newcommand{\augidx}{b}
 \newcommand{\task}{\mathcal{T}}
 \newcommand{\nrtasks}{T}
@@ -171,8 +185,8 @@
 \newcommand{\feature}{x}
 \newcommand{\predictedlabel}{\hat{\truelabel}}
 \newcommand{\dataset}{\mathcal{D}}
-\newcommand{\trainset}{\dataset^{(\rm train)}}
-\newcommand{\valset}{\dataset^{(\rm val)}}
+\newcommand{\trainset}{\dataset^{(\rm t)}}
+\newcommand{\valset}{\dataset^{(\rm v)}}
 \newcommand{\realcoorspace}[1]{\mathbb{R}^{\text{#1}}}
 \newcommand{\effdim}[1]{d_{\rm eff} \left( #1 \right)}
 \newcommand{\inspace}{\mathcal{X}}
@@ -212,9 +226,10 @@
 \newcommand{\gtvloss}[3]{L^{(\rm d)} \left({#1},{#2},{#3} \right)} 
 \newcommand{\clusterspread}[2]{L^{2}_{\clusteridx}\big({#1},{#2}\big)} 
 \newcommand{\determinant}[1]{{\rm det}\left( #1 \right)} 
-\DeclareMathOperator*{\argmax}{argmax}
+\newcommand{\tr}[1]{{\rm tr} \left(#1\right)}
+\DeclareMathOperator*{\argmax}{arg\,max}
 \newcommand{\uncertset}{\mathcal{U}}
-\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand{\itercntr}{k}
 \newcommand{\state}{s} 
 \newcommand{\statespace}{\mathcal{S}} 
@@ -228,19 +243,21 @@
 \newcommand{\cumreward}{G}
 \newcommand{\return}{\cumreward}
 \newcommand{\arm}{a}    % careful when using this macros file for beamer slides, as \action is already used by beamer
-\newcommand\actionset{\mathcal{A}}
+\newcommand{\actionset}{\actionspace}
+\newcommand{\actionspace}{\mathcal{A}}
 \newcommand{\obstacles}{\mathcal{B}}
-\newcommand{\valuefunc}[1]{v_{#1}}
+\newcommand{\statevaluefunc}[1]{v_{#1}} % state value function of a policy 
+\newcommand{\valuefunc}{v} % generic value function 
 \newcommand{\gridcell}[2]{\langle #1, #2 \rangle}
 \newcommand{\mdp}[5]{\langle #1, #2, #3, #4, #5 \rangle}
 \newcommand{\actionvalue}[1]{q_{#1}}
 \newcommand{\transition}{\mathcal{T}}
 \newcommand{\policy}{\pi}
 \newcommand{\charger}{c}
-\newcommand{\itervar}{k}
-\newcommand{\iteridx}{k}
+\newcommand{\itervar}{t}
+\newcommand{\iteridx}{t}
 \newcommand{\iteridxinner}{r}
-\newcommand{\discount}{\gamma}
+\newcommand{\discountfac}{\gamma}
 \newcommand{\rumba}{Rumba}
 \newcommand{\actionnorth}{\rm N} 
 \newcommand{\actionsouth}{\rm S} 
@@ -277,10 +294,15 @@
 \newcommand{\foldsize}{B}
 \newcommand{\nriter}{R}
 \newcommand{\opttol}{\varepsilon^{(\rm tol)}}
-\newcommand{\bd}[1]{\left| \partial #1\right|}
+\newcommand{\bdsize}[1]{\left| \partial #1\right|}
+\newcommand{\bd}[1]{\partial #1}
 
 \newcommand{\poisoningrate}{\eta}
 \newcommand{\thresholdfct}{\tau}
+\newcommand{\complexconjugate}[1]{\overline{#1}}
+
+\newcommand{\openball}[2]{\mathcal{B}_{#2}(#1)}
+\newcommand{\closedball}[2]{\overline{\mathcal{B}}_{#2}(#1)}
 
 % Convex Analysis 
 
@@ -289,9 +311,13 @@
 
 \newcommand{\fixedpointop}{\mathcal{F}} 
 \newcommand{\contractfac}{\kappa}
+\newcommand{\identityop}{\mathrm{Id}}
 
-% Machine Learning from Networked Data 
+% Federated Learning 
 
+
+\newcommand{\localtrainset}[1]{\dataset^{(#1,{\rm t})}}
+\newcommand{\localvalset}[1]{\dataset^{(#1,{\rm v})}}
 \newcommand{\localregularizer}[2]{\mathcal{R}^{(#1)}\big\{ #2 \big\}}
 \newcommand{\localloss}[3]{L_{#1}\left(#2,#3 \right)}
 \newcommand{\locallossfunc}[2]{L_{#1}\left(#2 \right)}
@@ -319,6 +345,7 @@
 \newcommand{\degreemtx}{\mathbf{D}}
 %\newcommand{\incidencemtx}{\mathbf{B}}
 \newcommand{\maxnodedegree}{d_{\rm max}}
+\newcommand{\avgnodedegree}{\overline{d}}
 \newcommand{\nodeidx}{i}
 \newcommand{\nrnodes}{n}
 \newcommand{\nodesigs}{\mathbb{R}^{\nodes \times \featuredim }}
@@ -365,6 +392,7 @@
 \newcommand{\demandbound}[1]{\delta^{(#1)}}
 \newcommand{\adversarynodes}{\mathcal{A}}
 \newcommand{\linmodel}[1]{\hypospace^{(#1)}}
+\newcommand{\bregmandiv}[3]{D_{#3}\big( #1,#2 \big)}
 \newcommand{\divergence}[2]{D\big( #1,#2 \big)}
 \newcommand{\kld}[2]{D^{(\rm KL)}\big( #1,#2 \big)}
 \newcommand{\estdivergence}[2]{\widehat{D}\big( #1,#2 \big)}
@@ -381,3 +409,5 @@
 \newcommand{\asyncactiveset}[1]{\mathcal{A}^{(#1)}} 
 \newcommand{\updatetimes}[1]{T^{(#1)}} 
 \newcommand{\trimmedset}{\mathcal{T}}
+
+ 

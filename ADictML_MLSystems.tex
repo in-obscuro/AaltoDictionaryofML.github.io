@@ -1,0 +1,307 @@
+\newglossaryentry{mlsystem}
+{name={machine learning system (ML system)},
+	description={An \gls{ml} system\index{machine learning system (ML system)} 
+		consists of computational \glspl{device} that can gather and store \gls{data}, 
+		execute \glspl{algorithm}, and exchange information via communication networks. 
+		Examples of the exchanged information include \gls{data} or updates of 
+		\glspl{modelparam}. Conceptually, an \gls{ml} system is distinct from 
+		an \gls{ml} \gls{algorithm}, i.e., an \gls{algorithm} specifies 
+		the abstract computational procedure (e.g., an \gls{optmethod}), 
+		while the system specifies how this procedure is realized in practice
+		\cite{Sipser2013}, \cite{KnuthAlgoBook}, \cite{tanenbaum2006modern}.
+		Examples of \glspl{algorithm} executed by \glspl{device} within an \gls{ml} system include
+		\glspl{gdmethod} for solving \gls{erm} problems.
+		\\
+		See also: \gls{ml}, \gls{device}. },
+ 	type=mlsystems, 
+ 	first={machine learning system (ML system)}, 
+ 	text={ML system},
+ 	firstplural={machine learning systems (ML systems)},
+ 	plural={ML systems}
+}
+
+\newglossaryentry{automaton}
+{name={automaton},
+	description={An\index{automaton} automaton is a mathematical representation of a computing \gls{device} 
+		whose behavior is described by a set of internal \glspl{state}, a memory 
+		structure, and a \gls{state}-transition rule. Formally, an automaton consists 
+		of a \gls{statespace}, a set of admissible memory configurations, 
+		and a transition \gls{function} that specifies how the current \gls{state} 
+		and memory are updated in response to inputs \cite{Sipser2013}. 
+		The notion of an automaton is useful for the analysis of \glspl{algorithm}, such 
+		as those used in \gls{ml} methods \cite{Cormen:2022aa}. 
+		Collections of interacting automata can be used to study \glspl{distributedalgorithm}, 
+		where each automaton represents a \gls{device} that executes local computations and 
+		communicates with other \glspl{device} \cite{ParallelDistrBook}, \cite{LynchDistributedAlgorithms}.
+		\\
+		See also: \gls{device}, \gls{state}, \gls{algorithm}. }, 
+	first={automaton}, 
+	type=mlsystems,
+	firstplural={automata}, 
+	plural={automata}, 
+	text={automaton} 
+}
+
+\newglossaryentry{flsystem}
+{name={federated learning system (FL system)},
+	description={An \gls{fl} system\index{federated learning system (FL system)} is a 
+		distributed \gls{mlsystem} in which multiple computational \glspl{device} 
+		collaborate to train \gls{ml} \glspl{model} without sharing their raw local \gls{data}.
+		An \gls{fl} system is characterized by a communication network that specifies 
+		which \glspl{device} can exchange information. Conceptually, an \gls{fl} system is 
+		distinct from an \gls{fl} \gls{algorithm} \cite{DistributedSystems}. The system 
+		specifies the participating entities, their interconnections, and execution constraints, while the \gls{algorithm} 
+		specifies the update rules for local and global \glspl{modelparam} \cite{LynchDistributedAlgorithms}, \cite{KnuthAlgoBook}.
+		Typical information exchanged in an \gls{fl} system includes 
+		\glspl{modelparam} or \gls{gradient} information, but not raw \gls{data}.
+		\\
+		See also: \gls{fl}, \gls{mlsystem}, \gls{algorithm}, \gls{flnetwork}.},
+ 	type=mlsystems,
+ 	first={federated learning system (FL system)},
+ 	text={FL system},
+ 	firstplural={federated learning systems (FL systems)},
+ 	plural={FL systems}
+}
+
+\newglossaryentry{checkpoint}
+{name={checkpoint},
+	description={A checkpoint\index{checkpoint} is a saved representation 
+   		of the \gls{state} of a running computation \cite{Elnozahy2002}.
+ 		In an \gls{mlsystem}, a checkpoint typically includes the current \glspl{modelparam} 
+		during \gls{model} \gls{training} \cite{Abadi2016}.
+		\\
+		See also: \gls{state}, \gls{training}. },
+	first={checkpoint},
+	plural={checkpoints},
+	firstplural={checkpoints},
+	type=mlsystems,
+	plural={checkpoints}
+}
+
+\newglossaryentry{checkpointing}
+{name={checkpointing},
+	description={Checkpointing\index{checkpointing} is a fault-tolerance mechanism
+		that periodically creates \glspl{checkpoint} by saving the \gls{state} 
+		of a running computation to persistent storage. Checkpointing is essential 
+		for fault-tolerant executions on revocable resources
+		such as \glspl{spotinstance} \cite{Elnozahy2002}, \cite{Mazzucco2011}.
+		\\
+		See also: \gls{checkpoint}, \gls{spotinstance}. },
+	first={checkpointing},
+	type=mlsystems,
+	text={checkpointing}
+}
+
+\newglossaryentry{longitudinaldata}
+{name={longitudinal data},
+	description={Longitudinal \gls{data}\index{longitudinal data} consist of \glspl{datapoint} 
+		whose attributes are measured repeatedly over time \cite{fitzmaurice2011applied}. 
+		In \gls{ml}, longitudinal \gls{data} are common in applications such 
+		as healthcare, where patient measurements are taken at multiple time points \cite{Mallinckrodt:2017aa}.
+		\\
+		See also: \gls{data}, \gls{datapoint}. }, 
+	first={longitudinal data},
+	type=mlsystems,
+	text={longitudinal data}
+}
+
+\newglossaryentry{crosssectionaldata}
+{name={cross-sectional data},
+	description={Cross-sectional \gls{data}\index{cross-sectional data} consist of 
+		\glspl{datapoint} whose attributes are measured once, without explicitly 
+		modeling temporal evolution \cite{Wooldridge2025}. In \gls{ml}, 
+		cross-sectional \gls{data} arise in image classification, 
+		where each image is treated as an individual \gls{datapoint} \cite{hastie01statisticallearning}.
+		\\
+		See also: \gls{data}, \gls{datapoint}. },
+	first={cross-sectional data},
+	type=mlsystems,
+	text={cross-sectional data}
+}
+
+\newglossaryentry{earlyexit}
+{name={early exit (deep learning)},
+	description={Early exit methods\index{early exit (deep learning)} refer to 
+		computational strategies for evaluating the \gls{prediction} of a 
+		\gls{deepnet}. The idea is to terminate \gls{inference} before evaluating 
+		all \glspl{layer} of a \gls{deepnet} \cite{Teerapittayanon2016}.
+		\\
+		See also: \gls{prediction}, \gls{deepnet}, \gls{inference}.}, 
+	first={early exit},
+	plural={early exits},
+	firstplural={early exits},
+	type=mlsystems,
+	text={early exit}
+}
+
+\newglossaryentry{spotinstance}
+{name={spot instance},
+	description={A spot instance\index{spot instance} is a 
+		type of \gls{cloudcomputing} service that 
+		provides computational resources at a reduced cost but 
+		without guarantees on availability \cite{Mazzucco2011}.
+		In particular, a spot instance may be revoked by the provider 
+		at any time, which requires the use of \gls{checkpointing} \cite{Khatua2013}.
+		\\
+		See also: \gls{cloudcomputing}, \gls{checkpointing}. }, 
+	first={spot instance},
+	type=mlsystems,
+	text={spot instance},
+	firstplural={spot instances},
+	plural={spot instances}
+}
+
+\newglossaryentry{cloudcomputing}
+{name={cloud computing},
+	description={Cloud computing\index{cloud computing} is a computing paradigm in which 
+		computational resources such as processing, storage, and networking are provided 
+		as on-demand services over a communication network
+		\cite{DistributedSystems}, \cite{ComerCloudComputing2021}, \cite{Armbrust2010}. 
+		In \gls{ml}, cloud computing systems are commonly used to host large \glspl{dataset} 
+		and to execute \gls{ml} \glspl{algorithm}. In contrast to \glspl{flsystem}, cloud 
+		computing typically centralizes \gls{data} and computation within provider-managed 
+		\gls{data} centers.
+		\\
+		See also: \gls{flsystem}, \gls{mlsystem}.},
+	type=mlsystems,
+	first={cloud computing},
+	text={cloud computing}
+}
+
+\newglossaryentry{mlaas}
+{name={machine learning as a service (MLaaS)},
+	description={MLaaS\index{machine learning as a service (MLaaS)} refers to a 
+		\gls{cloudcomputing} service \gls{model} in which \gls{ml} 
+		capabilities are provided to users via standardized network interfaces. 
+		In this \gls{model}, the cloud provider manages the underlying computing 
+		infrastructure, \gls{data} storage, and software platforms, while users 
+		access functionality such as \gls{model} \gls{training} and \gls{inference} 
+		without direct control over physical resources \cite{ComerCloudComputing2021}.
+				 \\
+		See also: \gls{cloudcomputing}, \gls{mlsystem}.},
+	type=mlsystems,
+	first={machine learning as a service (MLaaS)},
+	text={MLaaS}
+}
+
+\newglossaryentry{dynamicalsystem}
+{name={dynamical system},
+	description={A dynamical system\index{dynamical system} is an abstract system whose 
+		\gls{output} depends on an internal \gls{state} that evolves over time 
+		according to a \gls{state}-update rule \cite{StrogatzBook}. In discrete time, 
+		a dynamical system is commonly described by an \gls{iteration} of the form 
+		$\vs^{(\timeidx+1)} =\fixedpointop \vs^{(\timeidx)}$, where $\vs^{(\timeidx)}$ 
+		denotes the \gls{state} at time $\timeidx$ and $\fixedpointop$ is 
+		a \gls{state}-transition \gls{map}. In continuous time, dynamical systems 
+		are described by differential equations.
+		\\
+		See also: \gls{output}, \gls{state}. },
+	first={dynamical system},
+	text={dynamical system},
+	type=mlsystems,
+	plural={dynamical systems}, 
+	firstplural={dynamical systems}
+}
+
+\newglossaryentry{edgecomputing}
+{name={edge computing},
+	description={Edge computing\index{edge computing} refers to the placement of
+		computation and \gls{data} storage close to the sources of \gls{data} generation,
+		such as sensors, \glspl{mobiledevice}, or embedded systems, rather than in
+		centralized \gls{data} centers \cite{Shi2016}. 
+		In \gls{ml}, edge computing supports low-latency \gls{inference} and reduced
+		communication by executing parts of \gls{ml} \glspl{algorithm} on or near
+		\gls{data}-generating \glspl{device} \cite{Nguyen2019}. 
+		\\
+		See also: \gls{cloudcomputing}, \gls{flsystem}, \gls{mlsystem}.},
+	type=mlsystems,
+	first={edge computing},
+	text={edge computing}
+}
+
+\newglossaryentry{edgedevice}
+{name={edge device},
+	description={An edge \gls{device}\index{edge device} operates at or 
+		near the edge of a communication network \cite{Shi2016}. The term edge refers 
+		to the periphery of the network, where \gls{data} is produced and first processed.
+		In \gls{ml} and, in particular, in \gls{fl}, an edge \gls{device} 
+		typically corresponds to a node of an \gls{flnetwork}. Each edge \gls{device} 
+		stores local \gls{data} and implements parts of the \gls{mlpipeline}, 
+		such as \gls{data} \gls{preprocessing}, \gls{localmodel} \gls{training}, 
+		or \gls{inference} \cite{Hashash2021}. 
+		\\ 
+		See also: \gls{device}, \gls{edgecomputing}.},
+	type=mlsystems,
+	first={edge device},
+	plural={edge devices},
+	firstplural={edge devices},
+	text={edge device}
+}
+
+\newglossaryentry{preprocessing}
+{name={preprocessing},
+	description={Preprocessing\index{preprocessing} refers to the set of operations
+		applied to raw \gls{data} before they are fed into an \gls{ml} \gls{algorithm} \cite{hastie01statisticallearning}. 
+		The goal of preprocessing is to transform the \gls{data} into a form
+		that is more suitable for follow-up stages of an \gls{mlpipeline}. 
+		Typical preprocessing steps include cleaning corrupted or missing values,
+		normalizing or scaling \glspl{feature}, or encoding categorical variables \cite{MLPipeline}. 
+		\\
+		See also: \gls{data}, \gls{mlpipeline}, \gls{feature}.},
+	first={preprocessing},
+	type=mlsystems,
+	text={preprocessing}
+}
+
+\newglossaryentry{mlpipeline}
+{name={machine learning pipeline (ML pipeline)},
+	description={The term ML pipeline\index{machine learning pipeline (ML pipeline)} refers to a composition (i.e., concatenation)
+		of several \glspl{function} within an \gls{mlsystem}. The individual \glspl{function} 
+		include \gls{data} \gls{preprocessing}, \gls{featlearn}, \gls{model} \gls{training}, and \gls{inference}. 
+		By combining them, an \gls{mlsystem} turns raw \gls{data} into \glspl{prediction} \cite{MLPipeline}.  
+		\\
+		See also: \gls{function}, \gls{mlsystem}.},
+	first={machine learning pipeline (ML pipeline)},
+	type=mlsystems,
+	text={ML pipeline},
+	plural={machine learning pipelines (ML pipelines)},
+	firstplural={ML pipelines}
+}
+
+\newglossaryentry{mobiledevice}
+{name={mobile device},
+	description={A mobile \gls{device}\index{mobile device} is a portable computing
+		\gls{device} equipped with computational, storage, sensing, and wireless
+		communication capabilities \cite{Lane2015}, \cite{Tsoukas2024}. 
+		Examples of mobile \glspl{device} include smartphones, tablets, 
+		or wearables. Mobile \glspl{device} can act as \gls{data} sources 
+		and provide computational infrastructure for \glspl{edgecomputing} 
+		or \glspl{flsystem}.
+		\\
+		See also: \gls{edgecomputing}, \gls{flsystem}, \gls{mlsystem}.},
+	type=mlsystems,
+	first={mobile device},
+	plural={mobile devices},
+	firstplural={mobile devices},
+	text={mobile device}
+}
+
+%federated learning (system view, not algorithmic variants)
+
+%parameter server
+
+%client–server architecture
+
+%orchestration
+
+%asynchronous updates
+
+%data locality
+
+%deployment
+
+%inference service
+
+%scalability
+
+%resource heterogeneity
